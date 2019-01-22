@@ -27,6 +27,7 @@ class sbuject{
         {
             if(m_view[i]==ob)
             {
+                delete m_view[i];
                 m_view.erase(m_view.begin()+i);
                 break;
             }
@@ -37,6 +38,13 @@ class sbuject{
         for(int i=0;i<m_view.size();i++)
         {
             m_view[i]->updata(this,value);
+        }
+    }
+    ~subject ()
+    {
+         for(int i=0;i<m_view.size();i++)
+        {
+           delete m_view[i];
         }
     }
     private:
