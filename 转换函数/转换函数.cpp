@@ -78,10 +78,10 @@ class fenshu
  		int tmp2=a.fz*(tmp1/a.fm)+fz*(tmp1/fm);
  		return fenshu (tmp2/gcd(tmp1,tmp2),tmp1/gcd(tmp1,tmp2));
  	}
- 	operator double () const 
-    {
-        return double (fz*1.0/fm);
-    }
+// 	operator double () const 
+//    {
+//        return double (fz*1.0/fm);
+//    }
  	friend ostream& operator << (ostream &os,const fenshu& f); 
     private:
     int fz;
@@ -95,8 +95,8 @@ ostream& operator << (ostream &os,const fenshu& f)
 int main ()
 {
 	fenshu f1 (3,4);
-	double f4=4+f1;//调用doubel()转换 
-	fenshu f2=4.0+f1;//调用double转换,在调用构造函数转换 
+//	double f4=4+f1;//调用doubel()转换 
+//	fenshu f2=4.0+f1;//调用double转换,在调用构造函数转换 
 	fenshu f3=f1+4;//编译器不知道调用那一个 
-	cout<<f2<<endl;
+	cout<<f3<<endl;
 }
