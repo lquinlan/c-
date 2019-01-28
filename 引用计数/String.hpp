@@ -4,6 +4,7 @@
     有一个引用计数count,记录有多少个相同的内容,共用一块内存,只有当需要修改时,才会
     采用copy by writer,实时复制,c++string ,即采用这种措施.
     一般情况下只有拷贝构造采用引用计数
+    
 */
 //string.h
 #ifndef __String_h_

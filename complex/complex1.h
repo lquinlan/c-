@@ -71,7 +71,7 @@ class com{
     private:
         T1 re;
         T2 im;
-    friend com<T1,T2>& _dopt<T1,T2> (com<T1,T2>*,const com<T1,T2>&);
+    friend com<T1,T2>& _dopt<> (com<T1,T2>*,const com<T1,T2>&);
 };
 template<class T1,class T2>
 inline T1 real (const com<T1,T2> & x)
