@@ -38,16 +38,20 @@ int sum(initializer_list<int> il)
 }
 namespace ql03
 {
-	int sum ()//递归终止函数 
+	int sum ()//递归终止函数,必须有,负责编译不过 
 	{
 		return 0;
 	}
 	template<typename T,typename... Ts>
 	int sum ( const T& f,const Ts&... args)//分成一个和一包,递归调用 
 	{
+//		cout<<sizeof...(args)<<endl; 
+//		if(sizeof...(args)==0)
+//		return 0;
 		int s=f+sum(args...);
 		return s;
 	}
+	
 }  
 int main ()
 {
