@@ -42,7 +42,7 @@ int main ()
 	ql19216::test();
 	auto a=ql19216::add(1,3);
 	cout<<a<<endl;
-	auto f = [](int a, int b) -> decltype(a*b+a+b)//lambdaº¯Êý 
+	auto f = [](int a, int b) ->decltype(a*b+a+b)//lambdaº¯Êý 
     {
         return a * b+a+b;
     };
