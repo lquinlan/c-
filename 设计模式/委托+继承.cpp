@@ -5,12 +5,13 @@
 */
 #include<iostream>
 #include<vector>
+using namespace std;
 class subject;
 class observe{
     public:
     virtual void updata (subject* sub,int m_view);
 };
-class sbuject{
+class subject{
     public:
     void attach (observe *ob)
     {

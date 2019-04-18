@@ -84,14 +84,19 @@ class composite :public compoment
     }
     virtual void remove (compoment *ch)
     {
-    	for(int i=0;i<m_va.size();i++)
+    	vector<compoment*>::iterator it=m_va.begin();
+    	while(it!=m_va.end())
     	{
-    		if(m_va[i]==ch)
+    		if((*it)==ch)
     		{
-    			delete m_va[i];
-    			m_va.erase(m_va.begin()+i);
-    		}
-    	}
+    			delete *it;
+    			m_va.erase(it);
+			}
+			else
+			{
+				++it;
+			}
+		}
     }
     virtual compoment* getchild (int index)
     {

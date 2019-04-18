@@ -3,7 +3,8 @@ using std::cout;
 using std::endl;
 int main ()
 {
-	String a("123"),b(a);
+	String a("123"),b(a),c;
+	c=b;
 	a+=b;
 	cout<<b.getref()<<endl;;
 	cout<<a<<" "<<b<<endl;
