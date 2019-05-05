@@ -9,9 +9,10 @@ struct 中字节对齐需要满足的条件：
 
     2、结构所占用的总字节数是结构种字节数最长的变量的字节数的整数倍。 
 */
+//int char double,4+1+3+8
 struct Struct
 {
-    double d1;
+    double d1; 
     char d2;
     int d3;
 }a;
