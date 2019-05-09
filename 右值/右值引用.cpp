@@ -26,17 +26,29 @@ void f1 (int &&i)
 	cout<<"f1 :右值"<<endl;
 	p(forward<int>(i)); 
 }
+template<class T>
+void f1 (T &&i)
+{
+	cout<<"thisi r"<<endl;
+}
+template<class T>
+void f1 (T &i)
+{
+	cout<<"this l"<<endl;	
+} 
 int main ()
 {
-	p (1);
-	p (10);
+//	p (1);
+//	p (10);
 	int i=10;
-	p (i);
-	f (10);//我们想传递的是右值,但是在f函数中却调用的是p的左值版本,所有我们需要forward函数来保持,变量的本来模样 
-	f1 (11);
+//	p (i);
+//	f (10);//我们想传递的是右值,但是在f函数中却调用的是p的左值版本,所有我们需要forward函数来保持,变量的本来模样 
+	f1 (forward<int>(i));
+	f1 (forward<int&>(i));
+	f1 (forward<int&&>(i));
 	//f(i);//error,f想要的是右值引用,但是i是左值,我们可以使用move函数改变变量的属性
-	f1(move(i));
+	//f1(move(i));
 	//i=9;
-	cout<<i<<endl; 
+	//cout<<i<<endl; 
 	return 0;
 } 
