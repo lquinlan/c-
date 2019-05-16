@@ -114,6 +114,7 @@ template<class T1,class T2>
 ostream& operator<< (ostream& os,const com<T1,T2>& x)
 {
     os<<"("<<real(x)<<','<<imag(x)<<")";
+	return os;
 }
 template<class T1,class T2>
 inline const com<T1,T2>& operator+ (const com<T1,T2> &x)

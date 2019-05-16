@@ -276,6 +276,323 @@ namespace t4
 		_g
 	 } 
 }
+//fill
+namespace t5
+{
+	//形式1
+	/*
+	template<class f ,class t> inline
+	void fill (f f1,f f2, const t &y);
+	将区间[f1,f2)的区间全部复制上y
+	*/
+	void test0 ()
+	{
+		v vi;
+		random(vi,10);
+		fill(vi.begin(),vi.end(),777);
+		fe(vi,f);
+		_g
+	}
+
+}
+//generate
+namespace t6
+{
+	//形式1
+	/*
+	template<class f,class t> inline
+	void generate(f f1,f l ,t fun);
+	对于区间[f1,l)复上fun()产生的值
+	*/
+	void test0 ()
+	{
+		v vi(10);
+		//因为randon有重载,所有换个名字
+		int(*rdm)(int)=random;
+		generate(vi.begin(),vi.end(),bind(rdm,static_cast<int>(10)));
+		fe(vi,f);
+		_g
+	}
+} // namespace t6
+//remove
+namespace t7
+{
+	//形式1
+	/*
+		template<class in,class t>
+		inline in remove (in first,in out,const T& v);
+	*/
+	void test0 ()
+	{
+		v vi{0,1,4,45,2,4,4,3,4,100,0};
+		fe(vi,f);
+		_g
+		cout<<vi.size()<<endl;
+		auto iter=remove(vi.begin(),vi.end(),4);
+		for_each(vi.begin(),iter,f);
+		_g
+		for_each(iter,vi.end(),f);
+		_g
+		cout<<vi.size()<<endl;
+		fe(vi,f);
+		_g
+		vi.resize(iter-vi.begin());
+		fe(vi,f);
+		_g
+		//实现
+		/*
+				template <class _InputIter, class _OutputIter, class _Tp>
+		_OutputIter remove_copy(_InputIter __first, _InputIter __last,
+								_OutputIter __result, const _Tp& __value) {
+		for ( ; __first != __last; ++__first)
+			if (*__first != __value) {
+			*__result = *__first;
+			++__result;
+			}
+		return __result;
+		}
+		template <class _ForwardIter, class _Tp>
+		_ForwardIter remove(_ForwardIter __first, _ForwardIter __last,
+							const _Tp& __value) {
+		__first = find(__first, __last, __value);
+		_ForwardIter __i = __first;
+		return __first == __last ? __first 
+								: remove_copy(++__i, __last, __first, __value);
+		}
+		*/
+	}
+	//形式2
+	/*
+	template<class in,class pre> inline
+	in remove_if(in first,in last,pre _pre);
+	*/
+	void test1 ()
+	{
+		v vi{0,1,4,45,2,4,4,3,4,100,0};
+		fe(vi,f);
+		_g
+		cout<<vi.size()<<endl;
+		auto iter=remove_if(vi.begin(),vi.end(),bind(less<int>(),_1,5));
+		for_each(vi.begin(),iter,f);
+		_g
+		for_each(iter,vi.end(),f);
+		_g
+		cout<<vi.size()<<endl;
+		fe(vi,f);
+		_g
+		vi.resize(iter-vi.begin());
+		fe(vi,f);
+		_g
+	}
+
+} // namespace t7
+//unique
+namespace t8
+{
+	//形式1
+	/*
+	template<clss in> inline
+	in unique(in first,in last);
+	去除[first,last)区间中重复的元素
+	*/
+	void test0 ()
+	{
+		v vi;
+		random(vi,20,10);
+		fe(vi,f);
+		_g
+		auto iter=unique(vi.begin(),vi.end());
+		fe(vi,f);
+		//unique是消除区间内连续的重复元素;
+		_g
+		sort(vi.begin(),vi.end());
+		iter=unique(vi.begin(),vi.end());
+		fe(vi,f);
+		_g
+		vi.erase(iter,vi.end());
+		fe(vi,f);
+		_g
+	}
+}
+//reverse
+namespace t9
+{
+	//形式1
+	/*
+	template<class in>
+	inline void reverse (in first,in last);
+	对于区间[first,last)交换first+i,last-1-i),0<=i<=(last-first)/2
+	*/
+	void test0 ()
+	{
+		cout<<"t9::test0"<<endl;
+		v vi;
+		random(vi,10);
+		fe(vi,f);
+		_g
+		reverse(vi.begin(),vi.end());
+		fe(vi,f);
+		_g;
+	}
+
+
+}
+//rotate
+namespace t10
+{
+	//自己实现版本
+	template<class T>
+	void swap (T &a,T &b)
+	{
+		T tmp;
+		tmp=a;
+		a=b;
+		b=tmp;
+	}
+	template<class iter>
+	inline iter rotate (iter first,iter mid,iter last)
+	{
+		if(first==mid)
+		{
+			return last;
+		}
+		if(last==mid)
+		{
+			return first;
+		}
+		iter first2=mid;
+		while(first2!=last)
+		{
+			swap(*first++,*first2++);
+			if(first==mid)
+				mid=first2;
+		}
+		iter new_mid=first;
+		first2=mid;
+		while(first2!=last)
+		{
+			swap(*first++,*first2++);
+			if(first==mid)
+				mid=first2;
+			else if(first2==last)
+			{
+				first2=mid;
+			}
+		}
+		return new_mid;
+	}
+	void test0 ()
+	{
+		v vi;
+		random(vi,10);
+		fe(vi,f);
+		_g
+		t10::rotate(vi.begin(),vi.begin()+4,vi.end());
+		fe(vi,f);
+		_g
+	}
+	void test1 ()
+	{
+		v vi;
+		random(vi,10);
+		fe(vi,f);
+		_g
+		std::rotate(vi.begin(),vi.begin()+4,vi.end());
+		fe(vi,f);
+		_g
+	}
+}
+//random_shuffle
+namespace t11
+{
+	//形式1
+	/*
+	template<class T>
+	inline void random_shuffle(T fi,T la);
+	返回N!的一种形式
+	*/
+	void test0 ()
+	{
+		v vi;
+		for(int i=0;i<10;++i)
+			vi.emplace_back(i);
+		fe(vi,f);
+		_g
+		random_shuffle(vi.begin(),vi.end());
+		fe(vi,f);
+		_g
+	}
+} // namespace t11
+//partition
+#include<iterator>
+namespace t12
+{
+	void test0 ()
+	{
+		v vi;
+		random(vi,10);
+		copy(vi.begin(),vi.end(),ostream_iterator<int>(cout," "));
+		_g
+		auto it=std::partition(vi.begin(),vi.end(),bind(less<int>(),_1,40));
+		copy(vi.begin(),it,ostream_iterator<int>(cout," "));
+		cout<<"*"<<' ';
+		copy(it,vi.end(),ostream_iterator<int>(cout," "));
+		_g
+		fe(vi,f);
+		_g
+	}
+	//可能实现
+	template<class iter,class pre> inline iter
+	partition (iter first,iter last,pre p)
+	{
+		auto _first=find_if_not(first,last,p);
+		if(_first==last)
+		{
+			return _first;
+		}
+		for(iter i=next(_first);i!=last;++i)
+		{
+			if(p(*i))
+			{
+				swap(*i,*_first);
+				++_first;
+			}
+		}
+		return _first;
+	}
+	void test1 ()
+	{
+		v vi;
+		random(vi,10);
+		fe(vi,f);
+		_g
+		auto it=t12::partition(vi.begin(),vi.end(),bind(less<int>(),_1,40));
+		cout<<*it<<endl;
+		fe(vi,f);
+		_g
+	}
+	//借由partition实现的quicksort
+	template<class iter> inline void 
+	quicksort (iter first,iter last)
+	{
+		if(first==last) return;
+		auto p=*next(first,distance(first,last)/2);
+		auto mid1=t12::partition(first,last,[p](const auto &it){return it<p;});
+		auto mid2=t12::partition(first,last,[p](const typename iterator_traits<iter>::value_type & it){return it<=p;});
+		quicksort(first,mid1);
+		quicksort(mid2,last);
+	}
+	void test2 ()
+	{
+		v vi;
+		random(vi,10);
+		fe(vi,f);
+		_g
+		t12::quicksort(vi.begin(),vi.end());
+		fe(vi,f);
+		_g
+	}
+} // namespace t12
 
 int main ()
 {
@@ -290,5 +607,18 @@ int main ()
 	t4::test0();
 	t4::test1();
 	t4::test2();
+	t5::test0();
+	t6::test0();
+	t7::test0();
+	t7::test1();
+	t8::test0();
+	t9::test0();
+	t10::test0();
+	t10::test1();
+	t11::test0();
+	t12::test0();
+	t12::test1();
+	t12::test2();
+	cout<<__cplusplus<<endl;
 	return 0;
 }

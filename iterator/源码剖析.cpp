@@ -838,7 +838,7 @@ class istream_iterator {
   friend bool operator== __STL_NULL_TMPL_ARGS (const istream_iterator&,
                                                const istream_iterator&);
 protected:
-  istream* _M_stream;
+  istream* _M_stream;//ÊäÈëÁ÷ 
   _Tp _M_value;
   bool _M_end_marker;
   void _M_read() {
