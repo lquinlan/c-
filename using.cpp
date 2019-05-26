@@ -77,3 +77,59 @@ void test()
   	d.menfcn();
 }
 }
+//using 用法五
+//在c++17中允许将多个using声明,通过逗号连接起来
+namespace ql05
+{
+struct A {
+    void f(int) {cout << "A::f(int)" << endl;}
+};
+
+struct B {
+    void f(double) {cout << "B::f(double)" << endl;}
+};
+
+struct S : A, B {
+    using A::f, B::f; // C++17
+};
+
+int main()
+{
+    S s;
+    s.f(1); // A::f(int)
+    s.f(2.5); // B::f(double)
+}
+//--------------------- 
+//作者：zwvista 
+//来源：CSDN 
+//原文：https://blog.csdn.net/zwvista/article/details/81193459 
+//版权声明：本文为博主原创文章，转载请附上博文链接！
+} 
+//using用法六
+//通过使用加了 … 的 using 声明，可以将变长模板参数类型中的 using 声明转化为由多个用逗号合成的变长 using 声明。
+namespace ql06
+{
+template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
+//意为overloaded 多继承自Ts1,Ts2,Ts3,...,Tsn
+// using Ts::operator()...;为一个变长using声明,等同于 
+//using Ts1::operator(),using Ts2::operator(),...using Tsn operator() 
+template<class... Ts> overloaded(Ts...) -> overloaded<Ts...>;
+
+int main()
+{
+    overloaded s{
+        [](int){cout << "int" << endl;},
+        [](double){cout << "double" << endl;},
+        [](string){cout << "string" << endl;},
+    };
+    //lamade当作函数对象,每个里面相当于有一个operstor()函数 
+    s(1); // int
+    s(1.); // double
+    s("1"); // string
+}
+//--------------------- 
+//作者：zwvista 
+//来源：CSDN 
+//原文：https://blog.csdn.net/zwvista/article/details/81193459 
+//版权声明：本文为博主原创文章，转载请附上博文链接！
+} 

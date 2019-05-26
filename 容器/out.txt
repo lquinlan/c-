@@ -1,0 +1,200 @@
+using reserve
+allocate 40bytes
+memeroy address=0x1f6d90
+alot this=0x66fcdcid=0
+construct p=0x1f6d90
+T address0x66fcdc
+copy alot this=0x1f6d90id=0
+deal this=0x66fcdcid=0
+alot this=0x66fcdcid=1
+construct p=0x1f6d94
+T address0x66fcdc
+copy alot this=0x1f6d94id=1
+deal this=0x66fcdcid=1
+alot this=0x66fcdcid=2
+construct p=0x1f6d98
+T address0x66fcdc
+copy alot this=0x1f6d98id=2
+deal this=0x66fcdcid=2
+alot this=0x66fcdcid=3
+construct p=0x1f6d9c
+T address0x66fcdc
+copy alot this=0x1f6d9cid=3
+deal this=0x66fcdcid=3
+alot this=0x66fcdcid=4
+construct p=0x1f6da0
+T address0x66fcdc
+copy alot this=0x1f6da0id=4
+deal this=0x66fcdcid=4
+alot this=0x66fcdcid=5
+construct p=0x1f6da4
+T address0x66fcdc
+copy alot this=0x1f6da4id=5
+deal this=0x66fcdcid=5
+alot this=0x66fcdcid=6
+construct p=0x1f6da8
+T address0x66fcdc
+copy alot this=0x1f6da8id=6
+deal this=0x66fcdcid=6
+alot this=0x66fcdcid=7
+construct p=0x1f6dac
+T address0x66fcdc
+copy alot this=0x1f6dacid=7
+deal this=0x66fcdcid=7
+alot this=0x66fcdcid=8
+construct p=0x1f6db0
+T address0x66fcdc
+copy alot this=0x1f6db0id=8
+deal this=0x66fcdcid=8
+alot this=0x66fcdcid=9
+construct p=0x1f6db4
+T address0x66fcdc
+copy alot this=0x1f6db4id=9
+deal this=0x66fcdcid=9
+deal this=0x1f6d90id=0
+deal this=0x1f6d94id=1
+deal this=0x1f6d98id=2
+deal this=0x1f6d9cid=3
+deal this=0x1f6da0id=4
+deal this=0x1f6da4id=5
+deal this=0x1f6da8id=6
+deal this=0x1f6dacid=7
+deal this=0x1f6db0id=8
+deal this=0x1f6db4id=9
+deallocate:40bytes
+unusing reserve
+allocate 4bytes
+memeroy address=0x1f6d90
+alot this=0x66fc5cid=0
+construct p=0x1f6d90
+T address0x66fc5c
+copy alot this=0x1f6d90id=0
+deal this=0x66fc5cid=0
+allocate 8bytes
+memeroy address=0x1f6db0
+alot this=0x66fc5cid=1
+construct p=0x1f6db4
+T address0x66fc5c
+copy alot this=0x1f6db4id=1
+deal this=0x66fc5cid=1
+construct p=0x1f6db0
+T address0x1f6d90
+copy alot this=0x1f6db0id=0
+deal this=0x1f6d90id=0
+deallocate:4bytes
+allocate 16bytes
+memeroy address=0x1f6d90
+alot this=0x66fc5cid=2
+construct p=0x1f6d98
+T address0x66fc5c
+copy alot this=0x1f6d98id=2
+deal this=0x66fc5cid=2
+construct p=0x1f6d90
+T address0x1f6db0
+copy alot this=0x1f6d90id=0
+construct p=0x1f6d94
+T address0x1f6db4
+copy alot this=0x1f6d94id=1
+deal this=0x1f6db0id=0
+deal this=0x1f6db4id=1
+deallocate:8bytes
+alot this=0x66fcdcid=3
+construct p=0x1f6d9c
+T address0x66fcdc
+copy alot this=0x1f6d9cid=3
+deal this=0x66fcdcid=3
+allocate 32bytes
+memeroy address=0x1f6db0
+alot this=0x66fc5cid=4
+construct p=0x1f6dc0
+T address0x66fc5c
+copy alot this=0x1f6dc0id=4
+deal this=0x66fc5cid=4
+construct p=0x1f6db0
+T address0x1f6d90
+copy alot this=0x1f6db0id=0
+construct p=0x1f6db4
+T address0x1f6d94
+copy alot this=0x1f6db4id=1
+construct p=0x1f6db8
+T address0x1f6d98
+copy alot this=0x1f6db8id=2
+construct p=0x1f6dbc
+T address0x1f6d9c
+copy alot this=0x1f6dbcid=3
+deal this=0x1f6d90id=0
+deal this=0x1f6d94id=1
+deal this=0x1f6d98id=2
+deal this=0x1f6d9cid=3
+deallocate:16bytes
+alot this=0x66fcdcid=5
+construct p=0x1f6dc4
+T address0x66fcdc
+copy alot this=0x1f6dc4id=5
+deal this=0x66fcdcid=5
+alot this=0x66fcdcid=6
+construct p=0x1f6dc8
+T address0x66fcdc
+copy alot this=0x1f6dc8id=6
+deal this=0x66fcdcid=6
+alot this=0x66fcdcid=7
+construct p=0x1f6dcc
+T address0x66fcdc
+copy alot this=0x1f6dccid=7
+deal this=0x66fcdcid=7
+allocate 64bytes
+memeroy address=0x1f6de0
+alot this=0x66fc5cid=8
+construct p=0x1f6e00
+T address0x66fc5c
+copy alot this=0x1f6e00id=8
+deal this=0x66fc5cid=8
+construct p=0x1f6de0
+T address0x1f6db0
+copy alot this=0x1f6de0id=0
+construct p=0x1f6de4
+T address0x1f6db4
+copy alot this=0x1f6de4id=1
+construct p=0x1f6de8
+T address0x1f6db8
+copy alot this=0x1f6de8id=2
+construct p=0x1f6dec
+T address0x1f6dbc
+copy alot this=0x1f6decid=3
+construct p=0x1f6df0
+T address0x1f6dc0
+copy alot this=0x1f6df0id=4
+construct p=0x1f6df4
+T address0x1f6dc4
+copy alot this=0x1f6df4id=5
+construct p=0x1f6df8
+T address0x1f6dc8
+copy alot this=0x1f6df8id=6
+construct p=0x1f6dfc
+T address0x1f6dcc
+copy alot this=0x1f6dfcid=7
+deal this=0x1f6db0id=0
+deal this=0x1f6db4id=1
+deal this=0x1f6db8id=2
+deal this=0x1f6dbcid=3
+deal this=0x1f6dc0id=4
+deal this=0x1f6dc4id=5
+deal this=0x1f6dc8id=6
+deal this=0x1f6dccid=7
+deallocate:32bytes
+alot this=0x66fcdcid=9
+construct p=0x1f6e04
+T address0x66fcdc
+copy alot this=0x1f6e04id=9
+deal this=0x66fcdcid=9
+deal this=0x1f6de0id=0
+deal this=0x1f6de4id=1
+deal this=0x1f6de8id=2
+deal this=0x1f6decid=3
+deal this=0x1f6df0id=4
+deal this=0x1f6df4id=5
+deal this=0x1f6df8id=6
+deal this=0x1f6dfcid=7
+deal this=0x1f6e00id=8
+deal this=0x1f6e04id=9
+deallocate:64bytes

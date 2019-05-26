@@ -71,13 +71,20 @@ namespace ql02
 		{
 			n*=sizeof(T);
 			cout<<"allocate"<<' '<<n<<"bytes"<<endl; 
-			return static_cast<T*>(::operator new (n));	
+			pointer tmp=static_cast<T*>(::operator new (n));
+			cout<<"memeroy address="<<tmp<<endl;
+			return tmp;
 		} 
 		void deallocate (pointer p,size_t n)
 		{
 			cout<<"deallocate:"<<n*sizeof(T)<<"bytes"<<endl;
 			::operator delete(p); 
 		}
+		void construct (pointer p,const T &val)
+		{
+			cout<<"construct p="<<p<<endl;
+			new(p)T(val);
+		}	
 		//注:未写construct和destroy没有关系,在stl_construct文件中提供了一套默认的 
 	};
 	template<class u,class t>
@@ -90,25 +97,51 @@ namespace ql02
 	{
 		return (false);
 	}
+	struct foo{
+		int id;
+		foo ():id(0)
+		{
+			cout<<"dau alot this="<<this<<"id="<<id<<endl;
+		}
+		foo (int i):id(i)
+		{
+			cout<<"alot this="<<this<<"id="<<id<<endl;
+		}
+		foo (const foo& T):id(T.id)
+		{
+			cout<<"T address"<<&T<<endl;
+			cout<<"copy alot this="<<this<<"id="<<id<<endl;
+		}
+		void operator= (const foo &T)
+		{
+			cout<<"T address"<<&T<<endl;
+			cout<<"= alot this="<<this<<"id="<<id<<endl;
+			id=T.id;
+		}
+		~foo ()
+		{
+			cout<<"deal this="<<this<<"id="<<id<<endl;
+		}
+	};
 	void test ()
 	{
-		const int size=100;
+		const int size=10;
 		cout<<"using reserve"<<endl;
 		{
-			vector<int,qlalloc<int>> vi;
+			vector<foo,qlalloc<foo>> vi;
 			vi.reserve(size);
 			for(int i=0;i<size;++i) 
 			{
-				vi.push_back(i);
+				vi.emplace_back(i);
 			}
 		}
 		cout<<"unusing reserve"<<endl;
 		{
-			vector<int,qlalloc<int>> vi;
+			vector<foo,qlalloc<foo>> vi;
 			//vi.reserve(size);
 			for(int i=0;i<size;++i) 
 			{
-				vi.push_back(i);
+				vi.emplace_back(i);
 			}	
 		} 
 	}
@@ -160,9 +193,10 @@ namespace ql03
 
 int main ()
 {
-//	ql02::test();
-	ql03::test();
-	string tem("dfs");
+	freopen("out.txt","w",stdout);
+	ql02::test();
+	//ql03::test();
+	//string tem("dfs");
 //	f(tem);
 	return 0;
 } 

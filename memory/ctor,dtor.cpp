@@ -26,8 +26,14 @@ int main ()
         new(t++) foo(i);
     }
     cout<<"p="<<p<<' '<<"t="<<t<<endl;
-    delete[]  p;
+    delete[] p;
+    cout<<"de af p="<<p<<endl;
+    p->get();
     ++p;
-
+	p->get();
+	++p;
+	p->get();
+	++p;
+	p->get(); 
     return 0;
 }
