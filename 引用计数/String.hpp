@@ -36,9 +36,9 @@ private:
     };
     strbref* value;
 };
-inline String::strbref::strbref(const char* initvalue):ref(1)
+inline String::strbref::strbref(const char* initvalue=nullptr):ref(1)
 {
-    if(initvalue=="")
+    if(initvalue==nullptr)
     {
         m_str=new char[1];//保持形式上的一致
         m_str[0]='\0';
@@ -84,16 +84,16 @@ inline String& String::operator+= (const String &str)
     {
         delete value;
     }
-    //左为空
-    if(str.value->m_str=="")
-    {
-        value =new strbref(str.value->m_str);
-        return *this;
-    }
     //右为空
-    if(value->m_str=="")
+    if(str.value->m_str[0]=='\0')
     {
         value =new strbref(value->m_str);
+        return *this;
+    }
+    //左为空
+    if(value->m_str[0]=='\0')
+    {
+        value =new strbref(str.value->m_str);
         return *this;
     }
     //都不为空

@@ -4,8 +4,7 @@ using std::endl;
 int main ()
 {
 	String a("123"),b(a),c;
-	c=b;
-	a+=b;
+	a+=c;
 	cout<<b.getref()<<endl;;
-	cout<<a<<" "<<b<<endl;
+	cout<<a<<endl;
 } 
