@@ -1,0 +1,31 @@
+						Set介绍及操作说明:
+1.概要						
+         Set采用平衡树中的treap实现,在插入,移除,搜索时拥有对数复杂度;
+2.成员类型
+         key              int
+         node            struct
+3.公开的成员函数
+     构造函数:
+	Set();
+	Set(const Set &t);
+      复制函数:
+	 Set& operator = (const Set &t);
+      容量:
+	bool isEmpty();         检查容器是否为空 
+	int Size();                  返回容纳的元素数 
+      修改器:
+	void clear()                   清空容器
+	bool add(int tkey)         添加元素
+	bool remove(int tkey)   删除元素
+	bool addAll(Set c)         如果 set 中没有指定集合c中的所有元素，则将其添加到此 set 中。
+	bool removeAll(Set c)   移除 set 中那些包含在指定集合c中的元素。
+	bool retainAll(Set c)      仅保留 set 中那些包含在集合c中的元素。
+      查找:
+	bool contains(int o)         如果 set 包含指定的元素o，则返回 true。
+	bool containsAll(Set c)    如果此 set 包含指定集合c中的所有元素，则返回 true。
+      观察器:
+	vector<int> toArray()      返回包含此 set 中所有元素的数组
+4.非成员函数
+ 	Set& operator && (const Set &a, const Set &b);       集合的交
+	Set& operator + (const Set &a,const Set &b);	   集合的并
+    	Set& operator - (const Set &a,const Set &b);	   集合的差
